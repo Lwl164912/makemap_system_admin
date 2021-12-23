@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.CampusPoiMapper">
+    
+    <resultMap type="CampusPoi" id="CampusPoiResult">
+        <result property="poiid"    column="PoiID"    />
+        <result property="poiuuid"    column="PoiUUID"    />
+        <result property="poiname"    column="PoiName"    />
+        <result property="poitype"    column="PoiType"    />
+        <result property="poisubtype"    column="PoiSubType"    />
+        <result property="isforfreshman"    column="IsForFreshman"    />
+        <result property="ishotspot"    column="IsHotspot"    />
+        <result property="campusid"    column="campusID"    />
+        <result property="objectid"    column="ObjectID"    />
+        <result property="longitude"    column="longitude"    />
+        <result property="latitude"    column="latitude"    />
+        <result property="height"    column="height"    />
+        <result property="cameraview"    column="cameraView"    />
+        <result property="coverpicurl"    column="coverPicUrl"    />
+        <result property="picurls"    column="picUrls"    />
+        <result property="pic720url"    column="pic720Url"    />
+        <result property="pic720defaultlng"    column="pic720DefaultLng"    />
+        <result property="pic720defaultlat"    column="pic720DefaultLat"    />
+        <result property="videourl"    column="videoUrl"    />
+        <result property="weburl"    column="webUrl"    />
+        <result property="shortdescribe"    column="shortDescribe"    />
+        <result property="detaildescribe"    column="detailDescribe"    />
+        <result property="data"    column="data"    />
+        <result property="pindata"    column="pinData"    />
+        <result property="createtime"    column="createTime"    />
+        <result property="updatetime"    column="updateTime"    />
+        <result property="state"    column="state"    />
+    </resultMap>
+
+    <sql id="selectCampusPoiVo">
+        select PoiID, PoiUUID, PoiName, PoiType, PoiSubType, IsForFreshman, IsHotspot, campusID, ObjectID, longitude, latitude, height, cameraView, coverPicUrl, picUrls, pic720Url, pic720DefaultLng, pic720DefaultLat, videoUrl, webUrl, shortDescribe, detailDescribe, data, pinData, createTime, updateTime, state from tb_campus_poi
+    </sql>
+
+    <select id="selectCampusPoiList" parameterType="CampusPoi" resultMap="CampusPoiResult">
+        <include refid="selectCampusPoiVo"/>
+        <where>  
+            <if test="poiuuid != null  and poiuuid != ''"> and PoiUUID = #{poiuuid}</if>
+            <if test="poiname != null  and poiname != ''"> and PoiName like concat('%', #{poiname}, '%')</if>
+            <if test="poitype != null "> and PoiType = #{poitype}</if>
+            <if test="poisubtype != null "> and PoiSubType = #{poisubtype}</if>
+            <if test="isforfreshman != null "> and IsForFreshman = #{isforfreshman}</if>
+            <if test="ishotspot != null "> and IsHotspot = #{ishotspot}</if>
+            <if test="campusid != null "> and campusID = #{campusid}</if>
+            <if test="objectid != null "> and ObjectID = #{objectid}</if>
+            <if test="longitude != null "> and longitude = #{longitude}</if>
+            <if test="latitude != null "> and latitude = #{latitude}</if>
+            <if test="height != null "> and height = #{height}</if>
+            <if test="cameraview != null  and cameraview != ''"> and cameraView = #{cameraview}</if>
+            <if test="coverpicurl != null  and coverpicurl != ''"> and coverPicUrl = #{coverpicurl}</if>
+            <if test="picurls != null  and picurls != ''"> and picUrls = #{picurls}</if>
+            <if test="pic720url != null  and pic720url != ''"> and pic720Url = #{pic720url}</if>
+            <if test="pic720defaultlng != null "> and pic720DefaultLng = #{pic720defaultlng}</if>
+            <if test="pic720defaultlat != null "> and pic720DefaultLat = #{pic720defaultlat}</if>
+            <if test="videourl != null  and videourl != ''"> and videoUrl = #{videourl}</if>
+            <if test="weburl != null  and weburl != ''"> and webUrl = #{weburl}</if>
+            <if test="shortdescribe != null  and shortdescribe != ''"> and shortDescribe = #{shortdescribe}</if>
+            <if test="detaildescribe != null  and detaildescribe != ''"> and detailDescribe = #{detaildescribe}</if>
+            <if test="data != null  and data != ''"> and data = #{data}</if>
+            <if test="pindata != null  and pindata != ''"> and pinData = #{pindata}</if>
+            <if test="createtime != null "> and createTime = #{createtime}</if>
+            <if test="updatetime != null "> and updateTime = #{updatetime}</if>
+            <if test="state != null "> and state = #{state}</if>
+        </where>
+    </select>
+    
+    <select id="selectCampusPoiByPoiid" parameterType="Long" resultMap="CampusPoiResult">
+        <include refid="selectCampusPoiVo"/>
+        where PoiID = #{poiid}
+    </select>
+        
+    <insert id="insertCampusPoi" parameterType="CampusPoi" useGeneratedKeys="true" keyProperty="poiid">
+        insert into tb_campus_poi
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="poiuuid != null">PoiUUID,</if>
+            <if test="poiname != null">PoiName,</if>
+            <if test="poitype != null">PoiType,</if>
+            <if test="poisubtype != null">PoiSubType,</if>
+            <if test="isforfreshman != null">IsForFreshman,</if>
+            <if test="ishotspot != null">IsHotspot,</if>
+            <if test="campusid != null">campusID,</if>
+            <if test="objectid != null">ObjectID,</if>
+            <if test="longitude != null">longitude,</if>
+            <if test="latitude != null">latitude,</if>
+            <if test="height != null">height,</if>
+            <if test="cameraview != null">cameraView,</if>
+            <if test="coverpicurl != null">coverPicUrl,</if>
+            <if test="picurls != null">picUrls,</if>
+            <if test="pic720url != null">pic720Url,</if>
+            <if test="pic720defaultlng != null">pic720DefaultLng,</if>
+            <if test="pic720defaultlat != null">pic720DefaultLat,</if>
+            <if test="videourl != null">videoUrl,</if>
+            <if test="weburl != null">webUrl,</if>
+            <if test="shortdescribe != null">shortDescribe,</if>
+            <if test="detaildescribe != null">detailDescribe,</if>
+            <if test="data != null">data,</if>
+            <if test="pindata != null">pinData,</if>
+            <if test="createtime != null">createTime,</if>
+            <if test="updatetime != null">updateTime,</if>
+            <if test="state != null">state,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="poiuuid != null">#{poiuuid},</if>
+            <if test="poiname != null">#{poiname},</if>
+            <if test="poitype != null">#{poitype},</if>
+            <if test="poisubtype != null">#{poisubtype},</if>
+            <if test="isforfreshman != null">#{isforfreshman},</if>
+            <if test="ishotspot != null">#{ishotspot},</if>
+            <if test="campusid != null">#{campusid},</if>
+            <if test="objectid != null">#{objectid},</if>
+            <if test="longitude != null">#{longitude},</if>
+            <if test="latitude != null">#{latitude},</if>
+            <if test="height != null">#{height},</if>
+            <if test="cameraview != null">#{cameraview},</if>
+            <if test="coverpicurl != null">#{coverpicurl},</if>
+            <if test="picurls != null">#{picurls},</if>
+            <if test="pic720url != null">#{pic720url},</if>
+            <if test="pic720defaultlng != null">#{pic720defaultlng},</if>
+            <if test="pic720defaultlat != null">#{pic720defaultlat},</if>
+            <if test="videourl != null">#{videourl},</if>
+            <if test="weburl != null">#{weburl},</if>
+            <if test="shortdescribe != null">#{shortdescribe},</if>
+            <if test="detaildescribe != null">#{detaildescribe},</if>
+            <if test="data != null">#{data},</if>
+            <if test="pindata != null">#{pindata},</if>
+            <if test="createtime != null">#{createtime},</if>
+            <if test="updatetime != null">#{updatetime},</if>
+            <if test="state != null">#{state},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCampusPoi" parameterType="CampusPoi">
+        update tb_campus_poi
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="poiuuid != null">PoiUUID = #{poiuuid},</if>
+            <if test="poiname != null">PoiName = #{poiname},</if>
+            <if test="poitype != null">PoiType = #{poitype},</if>
+            <if test="poisubtype != null">PoiSubType = #{poisubtype},</if>
+            <if test="isforfreshman != null">IsForFreshman = #{isforfreshman},</if>
+            <if test="ishotspot != null">IsHotspot = #{ishotspot},</if>
+            <if test="campusid != null">campusID = #{campusid},</if>
+            <if test="objectid != null">ObjectID = #{objectid},</if>
+            <if test="longitude != null">longitude = #{longitude},</if>
+            <if test="latitude != null">latitude = #{latitude},</if>
+            <if test="height != null">height = #{height},</if>
+            <if test="cameraview != null">cameraView = #{cameraview},</if>
+            <if test="coverpicurl != null">coverPicUrl = #{coverpicurl},</if>
+            <if test="picurls != null">picUrls = #{picurls},</if>
+            <if test="pic720url != null">pic720Url = #{pic720url},</if>
+            <if test="pic720defaultlng != null">pic720DefaultLng = #{pic720defaultlng},</if>
+            <if test="pic720defaultlat != null">pic720DefaultLat = #{pic720defaultlat},</if>
+            <if test="videourl != null">videoUrl = #{videourl},</if>
+            <if test="weburl != null">webUrl = #{weburl},</if>
+            <if test="shortdescribe != null">shortDescribe = #{shortdescribe},</if>
+            <if test="detaildescribe != null">detailDescribe = #{detaildescribe},</if>
+            <if test="data != null">data = #{data},</if>
+            <if test="pindata != null">pinData = #{pindata},</if>
+            <if test="createtime != null">createTime = #{createtime},</if>
+            <if test="updatetime != null">updateTime = #{updatetime},</if>
+            <if test="state != null">state = #{state},</if>
+        </trim>
+        where PoiID = #{poiid}
+    </update>
+
+    <delete id="deleteCampusPoiByPoiid" parameterType="Long">
+        delete from tb_campus_poi where PoiID = #{poiid}
+    </delete>
+
+    <delete id="deleteCampusPoiByPoiids" parameterType="String">
+        delete from tb_campus_poi where PoiID in 
+        <foreach item="poiid" collection="array" open="(" separator="," close=")">
+            #{poiid}
+        </foreach>
+    </delete>
+</mapper>
