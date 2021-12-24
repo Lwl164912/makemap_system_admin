@@ -1,28 +1,28 @@
-package com.ruoyi.campuspoi.service.impl;
+package com.ruoyi.system.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ruoyi.campuspoi.mapper.TbCampusPoiMapper;
-import com.ruoyi.campuspoi.domain.TbCampusPoi;
-import com.ruoyi.campuspoi.service.ITbCampusPoiService;
+import com.ruoyi.system.mapper.TbCampusPoiMapper;
+import com.ruoyi.system.domain.TbCampusPoi;
+import com.ruoyi.system.service.ITbCampusPoiService;
 
 /**
  * 位置信息管理Service业务层处理
- * 
+ *
  * @author 牛亚朦
  * @date 2021-12-23
  */
 @Service
-public class TbCampusPoiServiceImpl implements ITbCampusPoiService 
+public class TbCampusPoiServiceImpl implements ITbCampusPoiService
 {
     @Autowired
     private TbCampusPoiMapper tbCampusPoiMapper;
 
     /**
      * 查询位置信息管理
-     * 
+     *
      * @param poiid 位置信息管理主键
      * @return 位置信息管理
      */
@@ -34,7 +34,7 @@ public class TbCampusPoiServiceImpl implements ITbCampusPoiService
 
     /**
      * 查询位置信息管理列表
-     * 
+     *
      * @param tbCampusPoi 位置信息管理
      * @return 位置信息管理
      */
@@ -46,7 +46,7 @@ public class TbCampusPoiServiceImpl implements ITbCampusPoiService
 
     /**
      * 新增位置信息管理
-     * 
+     *
      * @param tbCampusPoi 位置信息管理
      * @return 结果
      */
@@ -59,7 +59,7 @@ public class TbCampusPoiServiceImpl implements ITbCampusPoiService
 
     /**
      * 修改位置信息管理
-     * 
+     *
      * @param tbCampusPoi 位置信息管理
      * @return 结果
      */
@@ -72,7 +72,7 @@ public class TbCampusPoiServiceImpl implements ITbCampusPoiService
 
     /**
      * 批量删除位置信息管理
-     * 
+     *
      * @param poiids 需要删除的位置信息管理主键
      * @return 结果
      */
@@ -84,7 +84,7 @@ public class TbCampusPoiServiceImpl implements ITbCampusPoiService
 
     /**
      * 删除位置信息管理信息
-     * 
+     *
      * @param poiid 位置信息管理主键
      * @return 结果
      */

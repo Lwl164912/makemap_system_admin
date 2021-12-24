@@ -8,19 +8,19 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 位置信息管理对象 tb_campus_poi
- * 
+ *
  * @author 牛亚朦
  * @date 2021-12-23
  */
-public class CampusPoi extends BaseEntity
+public class TbCampusPoi extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 位置点 */
+    /** $column.columnComment */
     private Long poiid;
 
-    /**  */
-    @Excel(name = "")
+    /** $column.columnComment */
+    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private String poiuuid;
 
     /** $column.columnComment */
@@ -115,228 +115,228 @@ public class CampusPoi extends BaseEntity
     @Excel(name = "0 存在 1 删除")
     private Long state;
 
-    public void setPoiid(Long poiid) 
+    public void setPoiid(Long poiid)
     {
         this.poiid = poiid;
     }
 
-    public Long getPoiid() 
+    public Long getPoiid()
     {
         return poiid;
     }
-    public void setPoiuuid(String poiuuid) 
+    public void setPoiuuid(String poiuuid)
     {
         this.poiuuid = poiuuid;
     }
 
-    public String getPoiuuid() 
+    public String getPoiuuid()
     {
         return poiuuid;
     }
-    public void setPoiname(String poiname) 
+    public void setPoiname(String poiname)
     {
         this.poiname = poiname;
     }
 
-    public String getPoiname() 
+    public String getPoiname()
     {
         return poiname;
     }
-    public void setPoitype(Long poitype) 
+    public void setPoitype(Long poitype)
     {
         this.poitype = poitype;
     }
 
-    public Long getPoitype() 
+    public Long getPoitype()
     {
         return poitype;
     }
-    public void setPoisubtype(Long poisubtype) 
+    public void setPoisubtype(Long poisubtype)
     {
         this.poisubtype = poisubtype;
     }
 
-    public Long getPoisubtype() 
+    public Long getPoisubtype()
     {
         return poisubtype;
     }
-    public void setIsforfreshman(Long isforfreshman) 
+    public void setIsforfreshman(Long isforfreshman)
     {
         this.isforfreshman = isforfreshman;
     }
 
-    public Long getIsforfreshman() 
+    public Long getIsforfreshman()
     {
         return isforfreshman;
     }
-    public void setIshotspot(Long ishotspot) 
+    public void setIshotspot(Long ishotspot)
     {
         this.ishotspot = ishotspot;
     }
 
-    public Long getIshotspot() 
+    public Long getIshotspot()
     {
         return ishotspot;
     }
-    public void setCampusid(Long campusid) 
+    public void setCampusid(Long campusid)
     {
         this.campusid = campusid;
     }
 
-    public Long getCampusid() 
+    public Long getCampusid()
     {
         return campusid;
     }
-    public void setObjectid(Long objectid) 
+    public void setObjectid(Long objectid)
     {
         this.objectid = objectid;
     }
 
-    public Long getObjectid() 
+    public Long getObjectid()
     {
         return objectid;
     }
-    public void setLongitude(BigDecimal longitude) 
+    public void setLongitude(BigDecimal longitude)
     {
         this.longitude = longitude;
     }
 
-    public BigDecimal getLongitude() 
+    public BigDecimal getLongitude()
     {
         return longitude;
     }
-    public void setLatitude(BigDecimal latitude) 
+    public void setLatitude(BigDecimal latitude)
     {
         this.latitude = latitude;
     }
 
-    public BigDecimal getLatitude() 
+    public BigDecimal getLatitude()
     {
         return latitude;
     }
-    public void setHeight(Integer height) 
+    public void setHeight(Integer height)
     {
         this.height = height;
     }
 
-    public Integer getHeight() 
+    public Integer getHeight()
     {
         return height;
     }
-    public void setCameraview(String cameraview) 
+    public void setCameraview(String cameraview)
     {
         this.cameraview = cameraview;
     }
 
-    public String getCameraview() 
+    public String getCameraview()
     {
         return cameraview;
     }
-    public void setCoverpicurl(String coverpicurl) 
+    public void setCoverpicurl(String coverpicurl)
     {
         this.coverpicurl = coverpicurl;
     }
 
-    public String getCoverpicurl() 
+    public String getCoverpicurl()
     {
         return coverpicurl;
     }
-    public void setPicurls(String picurls) 
+    public void setPicurls(String picurls)
     {
         this.picurls = picurls;
     }
 
-    public String getPicurls() 
+    public String getPicurls()
     {
         return picurls;
     }
-    public void setPic720url(String pic720url) 
+    public void setPic720url(String pic720url)
     {
         this.pic720url = pic720url;
     }
 
-    public String getPic720url() 
+    public String getPic720url()
     {
         return pic720url;
     }
-    public void setPic720defaultlng(Long pic720defaultlng) 
+    public void setPic720defaultlng(Long pic720defaultlng)
     {
         this.pic720defaultlng = pic720defaultlng;
     }
 
-    public Long getPic720defaultlng() 
+    public Long getPic720defaultlng()
     {
         return pic720defaultlng;
     }
-    public void setPic720defaultlat(Long pic720defaultlat) 
+    public void setPic720defaultlat(Long pic720defaultlat)
     {
         this.pic720defaultlat = pic720defaultlat;
     }
 
-    public Long getPic720defaultlat() 
+    public Long getPic720defaultlat()
     {
         return pic720defaultlat;
     }
-    public void setVideourl(String videourl) 
+    public void setVideourl(String videourl)
     {
         this.videourl = videourl;
     }
 
-    public String getVideourl() 
+    public String getVideourl()
     {
         return videourl;
     }
-    public void setWeburl(String weburl) 
+    public void setWeburl(String weburl)
     {
         this.weburl = weburl;
     }
 
-    public String getWeburl() 
+    public String getWeburl()
     {
         return weburl;
     }
-    public void setShortdescribe(String shortdescribe) 
+    public void setShortdescribe(String shortdescribe)
     {
         this.shortdescribe = shortdescribe;
     }
 
-    public String getShortdescribe() 
+    public String getShortdescribe()
     {
         return shortdescribe;
     }
-    public void setDetaildescribe(String detaildescribe) 
+    public void setDetaildescribe(String detaildescribe)
     {
         this.detaildescribe = detaildescribe;
     }
 
-    public String getDetaildescribe() 
+    public String getDetaildescribe()
     {
         return detaildescribe;
     }
-    public void setData(String data) 
+    public void setData(String data)
     {
         this.data = data;
     }
 
-    public String getData() 
+    public String getData()
     {
         return data;
     }
-    public void setPindata(String pindata) 
+    public void setPindata(String pindata)
     {
         this.pindata = pindata;
     }
 
-    public String getPindata() 
+    public String getPindata()
     {
         return pindata;
     }
-    public void setState(Long state) 
+    public void setState(Long state)
     {
         this.state = state;
     }
 
-    public Long getState() 
+    public Long getState()
     {
         return state;
     }
@@ -368,9 +368,13 @@ public class CampusPoi extends BaseEntity
             .append("detaildescribe", getDetaildescribe())
             .append("data", getData())
             .append("pindata", getPindata())
-            .append("createtime", getCreatetime())
-            .append("updatetime", getUpdatetime())
+            .append("createTime", getCreateTime())
+            .append("updateTime", getUpdateTime())
             .append("state", getState())
+            .append("createBy", getCreateBy())
+            .append("createTime", getCreateTime())
+            .append("updateBy", getUpdateBy())
+            .append("updateTime", getUpdateTime())
             .toString();
     }
 }

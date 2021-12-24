@@ -1,28 +1,28 @@
-package com.ruoyi.campus.service.impl;
+package com.ruoyi.system.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ruoyi.campus.mapper.TbCampusMapper;
-import com.ruoyi.campus.domain.TbCampus;
-import com.ruoyi.campus.service.ITbCampusService;
+import com.ruoyi.system.mapper.TbCampusMapper;
+import com.ruoyi.system.domain.TbCampus;
+import com.ruoyi.system.service.ITbCampusService;
 
 /**
  * 校园信息管理Service业务层处理
- * 
+ *
  * @author 牛亚朦
  * @date 2021-12-23
  */
 @Service
-public class TbCampusServiceImpl implements ITbCampusService 
+public class TbCampusServiceImpl implements ITbCampusService
 {
     @Autowired
     private TbCampusMapper tbCampusMapper;
 
     /**
      * 查询校园信息管理
-     * 
+     *
      * @param campusid 校园信息管理主键
      * @return 校园信息管理
      */
@@ -34,7 +34,7 @@ public class TbCampusServiceImpl implements ITbCampusService
 
     /**
      * 查询校园信息管理列表
-     * 
+     *
      * @param tbCampus 校园信息管理
      * @return 校园信息管理
      */
@@ -46,7 +46,7 @@ public class TbCampusServiceImpl implements ITbCampusService
 
     /**
      * 新增校园信息管理
-     * 
+     *
      * @param tbCampus 校园信息管理
      * @return 结果
      */
@@ -59,7 +59,7 @@ public class TbCampusServiceImpl implements ITbCampusService
 
     /**
      * 修改校园信息管理
-     * 
+     *
      * @param tbCampus 校园信息管理
      * @return 结果
      */
@@ -72,7 +72,7 @@ public class TbCampusServiceImpl implements ITbCampusService
 
     /**
      * 批量删除校园信息管理
-     * 
+     *
      * @param campusids 需要删除的校园信息管理主键
      * @return 结果
      */
@@ -84,7 +84,7 @@ public class TbCampusServiceImpl implements ITbCampusService
 
     /**
      * 删除校园信息管理信息
-     * 
+     *
      * @param campusid 校园信息管理主键
      * @return 结果
      */

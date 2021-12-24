@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.TbPoiTypeMapper">
+
+    <resultMap type="TbPoiType" id="TbPoiTypeResult">
+        <result property="poitype"    column="PoiType"    />
+        <result property="poitypename"    column="PoiTypeName"    />
+        <result property="parenttype"    column="parentType"    />
+        <result property="hassubtype"    column="hasSubType"    />
+        <result property="awesomeicon"    column="awesomeIcon"    />
+        <result property="sortindex"    column="sortIndex"    />
+        <result property="data"    column="data"    />
+        <result property="createTime"    column="createTime"    />
+        <result property="updateTime"    column="updateTime"    />
+        <result property="state"    column="state"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectTbPoiTypeVo">
+        select PoiType, PoiTypeName, parentType, hasSubType, awesomeIcon, sortIndex, data, createTime, updateTime, state, create_by, create_time, update_by, update_time from tb_poi_type
+    </sql>
+
+    <select id="selectTbPoiTypeListAll" resultMap="TbPoiTypeResult">
+        <include refid="selectTbPoiTypeVo"/>
+    </select>
+
+    <select id="selectTbPoiTypeList" parameterType="TbPoiType" resultMap="TbPoiTypeResult">
+        <include refid="selectTbPoiTypeVo"/>
+        <where>
+            <if test="poitypename != null  and poitypename != ''"> and PoiTypeName like concat('%', #{poitypename}, '%')</if>
+            <if test="parenttype != null "> and parentType = #{parenttype}</if>
+            <if test="hassubtype != null "> and hasSubType = #{hassubtype}</if>
+            <if test="awesomeicon != null  and awesomeicon != ''"> and awesomeIcon = #{awesomeicon}</if>
+            <if test="sortindex != null "> and sortIndex = #{sortindex}</if>
+            <if test="data != null  and data != ''"> and data = #{data}</if>
+            <if test="createTime != null "> and createTime = #{createTime}</if>
+            <if test="updateTime != null "> and updateTime = #{updateTime}</if>
+            <if test="state != null "> and state = #{state}</if>
+        </where>
+    </select>
+
+    <select id="selectTbPoiTypeByPoitype" parameterType="Long" resultMap="TbPoiTypeResult">
+        <include refid="selectTbPoiTypeVo"/>
+        where PoiType = #{poitype}
+    </select>
+
+    <insert id="insertTbPoiType" parameterType="TbPoiType" useGeneratedKeys="true" keyProperty="poitype">
+        insert into tb_poi_type
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="poitypename != null">PoiTypeName,</if>
+            <if test="parenttype != null">parentType,</if>
+            <if test="hassubtype != null">hasSubType,</if>
+            <if test="awesomeicon != null">awesomeIcon,</if>
+            <if test="sortindex != null">sortIndex,</if>
+            <if test="data != null">data,</if>
+            <if test="createTime != null">createTime,</if>
+            <if test="updateTime != null">updateTime,</if>
+            <if test="state != null">state,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="poitypename != null">#{poitypename},</if>
+            <if test="parenttype != null">#{parenttype},</if>
+            <if test="hassubtype != null">#{hassubtype},</if>
+            <if test="awesomeicon != null">#{awesomeicon},</if>
+            <if test="sortindex != null">#{sortindex},</if>
+            <if test="data != null">#{data},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="state != null">#{state},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTbPoiType" parameterType="TbPoiType">
+        update tb_poi_type
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="poitypename != null">PoiTypeName = #{poitypename},</if>
+            <if test="parenttype != null">parentType = #{parenttype},</if>
+            <if test="hassubtype != null">hasSubType = #{hassubtype},</if>
+            <if test="awesomeicon != null">awesomeIcon = #{awesomeicon},</if>
+            <if test="sortindex != null">sortIndex = #{sortindex},</if>
+            <if test="data != null">data = #{data},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="updateTime != null">updateTime = #{updateTime},</if>
+            <if test="state != null">state = #{state},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where PoiType = #{poitype}
+    </update>
+
+    <delete id="deleteTbPoiTypeByPoitype" parameterType="Long">
+        delete from tb_poi_type where PoiType = #{poitype}
+    </delete>
+
+    <delete id="deleteTbPoiTypeByPoitypes" parameterType="String">
+        delete from tb_poi_type where PoiType in
+        <foreach item="poitype" collection="array" open="(" separator="," close=")">
+            #{poitype}
+        </foreach>
+    </delete>
+</mapper>

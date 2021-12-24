@@ -1,4 +1,4 @@
-package com.ruoyi.campus.domain;
+package com.ruoyi.system.domain;
 
 import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -368,7 +368,7 @@ public class TbCampus extends BaseEntity
             .append("camerahead", getCamerahead())
             .append("cameratilt", getCameratilt())
             .append("createyear", getCreateyear())
-            .append("updatetime", getUpdateTime())
+            .append("updateTime", getUpdateTime())
             .append("state", getState())
             .append("createBy", getCreateBy())
             .append("createTime", getCreateTime())

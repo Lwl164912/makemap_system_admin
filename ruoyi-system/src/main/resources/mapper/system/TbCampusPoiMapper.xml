@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruoyi.campuspoi.mapper.TbCampusPoiMapper">
-    
+<mapper namespace="com.ruoyi.system.mapper.TbCampusPoiMapper">
+
     <resultMap type="TbCampusPoi" id="TbCampusPoiResult">
         <result property="poiid"    column="PoiID"    />
         <result property="poiuuid"    column="PoiUUID"    />
@@ -29,8 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="detaildescribe"    column="detailDescribe"    />
         <result property="data"    column="data"    />
         <result property="pindata"    column="pinData"    />
-        <result property="createtime"    column="createTime"    />
-        <result property="updatetime"    column="updateTime"    />
+        <result property="createTime"    column="createTime"    />
+        <result property="updateTime"    column="updateTime"    />
         <result property="state"    column="state"    />
         <result property="createBy"    column="create_by"    />
         <result property="createTime"    column="create_time"    />
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectTbCampusPoiList" parameterType="TbCampusPoi" resultMap="TbCampusPoiResult">
         <include refid="selectTbCampusPoiVo"/>
-        <where>  
+        <where>
             <if test="poiuuid != null  and poiuuid != ''"> and PoiUUID = #{poiuuid}</if>
             <if test="poiname != null  and poiname != ''"> and PoiName like concat('%', #{poiname}, '%')</if>
             <if test="poitype != null "> and PoiType = #{poitype}</if>
@@ -68,17 +68,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="detaildescribe != null  and detaildescribe != ''"> and detailDescribe = #{detaildescribe}</if>
             <if test="data != null  and data != ''"> and data = #{data}</if>
             <if test="pindata != null  and pindata != ''"> and pinData = #{pindata}</if>
-            <if test="createtime != null "> and createTime = #{createtime}</if>
-            <if test="updatetime != null "> and updateTime = #{updatetime}</if>
+            <if test="createTime != null "> and createTime = #{createTime}</if>
+            <if test="updateTime != null "> and updateTime = #{updateTime}</if>
             <if test="state != null "> and state = #{state}</if>
         </where>
     </select>
-    
+
     <select id="selectTbCampusPoiByPoiid" parameterType="Long" resultMap="TbCampusPoiResult">
         <include refid="selectTbCampusPoiVo"/>
         where PoiID = #{poiid}
     </select>
-        
+
     <insert id="insertTbCampusPoi" parameterType="TbCampusPoi" useGeneratedKeys="true" keyProperty="poiid">
         insert into tb_campus_poi
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -105,8 +105,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="detaildescribe != null">detailDescribe,</if>
             <if test="data != null">data,</if>
             <if test="pindata != null">pinData,</if>
-            <if test="createtime != null">createTime,</if>
-            <if test="updatetime != null">updateTime,</if>
+            <if test="createTime != null">createTime,</if>
+            <if test="updateTime != null">updateTime,</if>
             <if test="state != null">state,</if>
             <if test="createBy != null">create_by,</if>
             <if test="createTime != null">create_time,</if>
@@ -137,8 +137,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="detaildescribe != null">#{detaildescribe},</if>
             <if test="data != null">#{data},</if>
             <if test="pindata != null">#{pindata},</if>
-            <if test="createtime != null">#{createtime},</if>
-            <if test="updatetime != null">#{updatetime},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
             <if test="state != null">#{state},</if>
             <if test="createBy != null">#{createBy},</if>
             <if test="createTime != null">#{createTime},</if>
@@ -173,8 +173,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="detaildescribe != null">detailDescribe = #{detaildescribe},</if>
             <if test="data != null">data = #{data},</if>
             <if test="pindata != null">pinData = #{pindata},</if>
-            <if test="createtime != null">createTime = #{createtime},</if>
-            <if test="updatetime != null">updateTime = #{updatetime},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="updateTime != null">updateTime = #{updateTime},</if>
             <if test="state != null">state = #{state},</if>
             <if test="createBy != null">create_by = #{createBy},</if>
             <if test="createTime != null">create_time = #{createTime},</if>
@@ -189,7 +189,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteTbCampusPoiByPoiids" parameterType="String">
-        delete from tb_campus_poi where PoiID in 
+        delete from tb_campus_poi where PoiID in
         <foreach item="poiid" collection="array" open="(" separator="," close=")">
             #{poiid}
         </foreach>
