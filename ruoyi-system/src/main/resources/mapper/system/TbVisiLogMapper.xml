@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.TbVisiLogMapper">
+
+    <resultMap type="TbVisiLog" id="TbVisiLogResult">
+        <result property="id"    column="id"    />
+        <result property="visiType"    column="visi_type"    />
+        <result property="campusId"    column="campus_id"    />
+        <result property="campusName"    column="campus_name"    />
+        <result property="poiName"    column="poi_name"    />
+        <result property="poiId"    column="poi_id"    />
+        <result property="urlContent"    column="url_content"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectTbVisiLogVo">
+        select id, visi_type,poi_name,campus_name, campus_id, poi_id, url_content, create_by, create_time, update_by, update_time from tb_visi_log
+    </sql>
+
+    <select id="selectTbVisiLogList" parameterType="TbVisiLog" resultMap="TbVisiLogResult">
+        <include refid="selectTbVisiLogVo"/>
+        <where>
+            <if test="visiType != null  and visiType != ''"> and visi_type = #{visiType}</if>
+            <if test="campusId != null "> and campus_id = #{campusId}</if>
+            <if test="poiId != null "> and poi_id = #{poiId}</if>
+            <if test="urlContent != null  and urlContent != ''"> and url_content = #{urlContent}</if>
+            <if test="startTime != null "> and create_time &gt;= #{startTime}</if>
+            <if test="endTime != null "> and create_time &lt;=  #{endTime}</if>
+        </where>
+    </select>
+
+    <select id="selectTbVisiLogById" parameterType="Long" resultMap="TbVisiLogResult">
+        <include refid="selectTbVisiLogVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertTbVisiLog" parameterType="TbVisiLog">
+        insert into tb_visi_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="visiType != null">visi_type,</if>
+            <if test="campusId != null">campus_id,</if>
+            <if test="poiName != null">poi_name,</if>
+            <if test="campusName != null">campus_name,</if>
+            <if test="poiId != null">poi_id,</if>
+            <if test="urlContent != null">url_content,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="visiType != null">#{visiType},</if>
+            <if test="campusId != null">#{campusId},</if>
+            <if test="poiName != null">#{poiName},</if>
+            <if test="campusName != null">#{campusName},</if>
+            <if test="poiId != null">#{poiId},</if>
+            <if test="urlContent != null">#{urlContent},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTbVisiLog" parameterType="TbVisiLog">
+        update tb_visi_log
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="visiType != null">visi_type = #{visiType},</if>
+            <if test="campusId != null">campus_id = #{campusId},</if>
+            <if test="poiId != null">poi_id = #{poiId},</if>
+            <if test="urlContent != null">url_content = #{urlContent},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTbVisiLogById" parameterType="Long">
+        delete from tb_visi_log where id = #{id}
+    </delete>
+
+    <delete id="deleteTbVisiLogByIds" parameterType="String">
+        delete from tb_visi_log where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

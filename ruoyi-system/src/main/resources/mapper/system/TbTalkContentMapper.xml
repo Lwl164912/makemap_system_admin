@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.TbTalkContentMapper">
+    
+    <resultMap type="TbTalkContent" id="TbTalkContentResult">
+        <result property="id"    column="id"    />
+        <result property="campusId"    column="campus_id"    />
+        <result property="msgDes"    column="msg_des"    />
+        <result property="msgImg"    column="msg_img"    />
+        <result property="msgName"    column="msg_name"    />
+        <result property="msgTimer"    column="msg_timer"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="poiId"    column="poi_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectTbTalkContentVo">
+        select id, campus_id, msg_des, msg_img, msg_name, msg_timer, parent_id, poi_id, create_by, create_time, update_by, update_time from tb_talk_content
+    </sql>
+
+    <select id="selectTbTalkContentList" parameterType="TbTalkContent" resultMap="TbTalkContentResult">
+        <include refid="selectTbTalkContentVo"/>
+        <where>  
+            <if test="campusId != null "> and campus_id = #{campusId}</if>
+            <if test="msgDes != null  and msgDes != ''"> and msg_des = #{msgDes}</if>
+            <if test="msgImg != null  and msgImg != ''"> and msg_img = #{msgImg}</if>
+            <if test="msgName != null  and msgName != ''"> and msg_name like concat('%', #{msgName}, '%')</if>
+            <if test="msgTimer != null "> and msg_timer = #{msgTimer}</if>
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="poiId != null "> and poi_id = #{poiId}</if>
+        </where>
+    </select>
+    
+    <select id="selectTbTalkContentById" parameterType="Long" resultMap="TbTalkContentResult">
+        <include refid="selectTbTalkContentVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTbTalkContent" parameterType="TbTalkContent">
+        insert into tb_talk_content
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="campusId != null">campus_id,</if>
+            <if test="msgDes != null">msg_des,</if>
+            <if test="msgImg != null">msg_img,</if>
+            <if test="msgName != null">msg_name,</if>
+            <if test="msgTimer != null">msg_timer,</if>
+            <if test="parentId != null">parent_id,</if>
+            <if test="poiId != null">poi_id,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="campusId != null">#{campusId},</if>
+            <if test="msgDes != null">#{msgDes},</if>
+            <if test="msgImg != null">#{msgImg},</if>
+            <if test="msgName != null">#{msgName},</if>
+            <if test="msgTimer != null">#{msgTimer},</if>
+            <if test="parentId != null">#{parentId},</if>
+            <if test="poiId != null">#{poiId},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTbTalkContent" parameterType="TbTalkContent">
+        update tb_talk_content
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="campusId != null">campus_id = #{campusId},</if>
+            <if test="msgDes != null">msg_des = #{msgDes},</if>
+            <if test="msgImg != null">msg_img = #{msgImg},</if>
+            <if test="msgName != null">msg_name = #{msgName},</if>
+            <if test="msgTimer != null">msg_timer = #{msgTimer},</if>
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="poiId != null">poi_id = #{poiId},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTbTalkContentById" parameterType="Long">
+        delete from tb_talk_content where id = #{id}
+    </delete>
+
+    <delete id="deleteTbTalkContentByIds" parameterType="String">
+        delete from tb_talk_content where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.TbPanoSourceMapper">
+    
+    <resultMap type="TbPanoSource" id="TbPanoSourceResult">
+        <result property="sourceid"    column="sourceId"    />
+        <result property="typeid"    column="typeId"    />
+        <result property="sourcename"    column="sourceName"    />
+        <result property="brief"    column="brief"    />
+        <result property="campusid"    column="campusId"    />
+        <result property="departmentid"    column="departmentId"    />
+        <result property="buildid"    column="buildId"    />
+        <result property="floor"    column="floor"    />
+        <result property="serviceid"    column="serviceId"    />
+        <result property="userid"    column="userId"    />
+        <result property="sourceurl"    column="sourceUrl"    />
+        <result property="thumburl"    column="thumbUrl"    />
+        <result property="latitude"    column="latitude"    />
+        <result property="longitude"    column="longitude"    />
+        <result property="sourcesize"    column="sourceSize"    />
+        <result property="state"    column="state"    />
+        <result property="createTime"    column="createTime"    />
+        <result property="updateTime"    column="updateTime"    />
+        <result property="x"    column="x"    />
+        <result property="y"    column="y"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="updateBy"    column="update_by"    />
+    </resultMap>
+
+    <sql id="selectTbPanoSourceVo">
+        select sourceId, typeId, sourceName, brief, campusId, departmentId, buildId, floor, serviceId, userId, sourceUrl, thumbUrl, latitude, longitude, sourceSize, state, createTime, updateTime, x, y, create_by, update_by from tb_pano_source
+    </sql>
+
+    <select id="selectTbPanoSourceList" parameterType="TbPanoSource" resultMap="TbPanoSourceResult">
+        <include refid="selectTbPanoSourceVo"/>
+        <where>  
+            <if test="typeid != null "> and typeId = #{typeid}</if>
+            <if test="sourcename != null  and sourcename != ''"> and sourceName like concat('%', #{sourcename}, '%')</if>
+            <if test="brief != null  and brief != ''"> and brief = #{brief}</if>
+            <if test="campusid != null "> and campusId = #{campusid}</if>
+            <if test="departmentid != null "> and departmentId = #{departmentid}</if>
+            <if test="buildid != null "> and buildId = #{buildid}</if>
+            <if test="floor != null "> and floor = #{floor}</if>
+            <if test="serviceid != null "> and serviceId = #{serviceid}</if>
+            <if test="userid != null "> and userId = #{userid}</if>
+            <if test="sourceurl != null  and sourceurl != ''"> and sourceUrl = #{sourceurl}</if>
+            <if test="thumburl != null  and thumburl != ''"> and thumbUrl = #{thumburl}</if>
+            <if test="latitude != null "> and latitude = #{latitude}</if>
+            <if test="longitude != null "> and longitude = #{longitude}</if>
+            <if test="sourcesize != null  and sourcesize != ''"> and sourceSize = #{sourcesize}</if>
+            <if test="state != null "> and state = #{state}</if>
+            <if test="createTime != null "> and createTime = #{createTime}</if>
+            <if test="updateTime != null "> and updateTime = #{updateTime}</if>
+            <if test="x != null "> and x = #{x}</if>
+            <if test="y != null "> and y = #{y}</if>
+        </where>
+    </select>
+    
+    <select id="selectTbPanoSourceBySourceid" parameterType="Long" resultMap="TbPanoSourceResult">
+        <include refid="selectTbPanoSourceVo"/>
+        where sourceId = #{sourceid}
+    </select>
+        
+    <insert id="insertTbPanoSource" parameterType="TbPanoSource" useGeneratedKeys="true" keyProperty="sourceid">
+        insert into tb_pano_source
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="typeid != null">typeId,</if>
+            <if test="sourcename != null">sourceName,</if>
+            <if test="brief != null">brief,</if>
+            <if test="campusid != null">campusId,</if>
+            <if test="departmentid != null">departmentId,</if>
+            <if test="buildid != null">buildId,</if>
+            <if test="floor != null">floor,</if>
+            <if test="serviceid != null">serviceId,</if>
+            <if test="userid != null">userId,</if>
+            <if test="sourceurl != null">sourceUrl,</if>
+            <if test="thumburl != null">thumbUrl,</if>
+            <if test="latitude != null">latitude,</if>
+            <if test="longitude != null">longitude,</if>
+            <if test="sourcesize != null">sourceSize,</if>
+            <if test="state != null">state,</if>
+            <if test="createTime != null">createTime,</if>
+            <if test="updateTime != null">updateTime,</if>
+            <if test="x != null">x,</if>
+            <if test="y != null">y,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="updateBy != null">update_by,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="typeid != null">#{typeid},</if>
+            <if test="sourcename != null">#{sourcename},</if>
+            <if test="brief != null">#{brief},</if>
+            <if test="campusid != null">#{campusid},</if>
+            <if test="departmentid != null">#{departmentid},</if>
+            <if test="buildid != null">#{buildid},</if>
+            <if test="floor != null">#{floor},</if>
+            <if test="serviceid != null">#{serviceid},</if>
+            <if test="userid != null">#{userid},</if>
+            <if test="sourceurl != null">#{sourceurl},</if>
+            <if test="thumburl != null">#{thumburl},</if>
+            <if test="latitude != null">#{latitude},</if>
+            <if test="longitude != null">#{longitude},</if>
+            <if test="sourcesize != null">#{sourcesize},</if>
+            <if test="state != null">#{state},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="x != null">#{x},</if>
+            <if test="y != null">#{y},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTbPanoSource" parameterType="TbPanoSource">
+        update tb_pano_source
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="typeid != null">typeId = #{typeid},</if>
+            <if test="sourcename != null">sourceName = #{sourcename},</if>
+            <if test="brief != null">brief = #{brief},</if>
+            <if test="campusid != null">campusId = #{campusid},</if>
+            <if test="departmentid != null">departmentId = #{departmentid},</if>
+            <if test="buildid != null">buildId = #{buildid},</if>
+            <if test="floor != null">floor = #{floor},</if>
+            <if test="serviceid != null">serviceId = #{serviceid},</if>
+            <if test="userid != null">userId = #{userid},</if>
+            <if test="sourceurl != null">sourceUrl = #{sourceurl},</if>
+            <if test="thumburl != null">thumbUrl = #{thumburl},</if>
+            <if test="latitude != null">latitude = #{latitude},</if>
+            <if test="longitude != null">longitude = #{longitude},</if>
+            <if test="sourcesize != null">sourceSize = #{sourcesize},</if>
+            <if test="state != null">state = #{state},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="updateTime != null">updateTime = #{updateTime},</if>
+            <if test="x != null">x = #{x},</if>
+            <if test="y != null">y = #{y},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+        </trim>
+        where sourceId = #{sourceid}
+    </update>
+
+    <delete id="deleteTbPanoSourceBySourceid" parameterType="Long">
+        delete from tb_pano_source where sourceId = #{sourceid}
+    </delete>
+
+    <delete id="deleteTbPanoSourceBySourceids" parameterType="String">
+        delete from tb_pano_source where sourceId in 
+        <foreach item="sourceid" collection="array" open="(" separator="," close=")">
+            #{sourceid}
+        </foreach>
+    </delete>
+</mapper>
